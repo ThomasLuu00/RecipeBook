@@ -1,7 +1,8 @@
-from rest_framework import generics
-from django.views import generic
+from rest_framework import generics, status
+from rest_framework.response import Response
 from .models import Item
 from .serializers import ItemSerializer
+
 
 class ListItemsView(generics.ListAPIView):
     """
@@ -10,9 +11,22 @@ class ListItemsView(generics.ListAPIView):
     queryset = Item.objects.all()
     serializer_class = ItemSerializer
 
-class IndexView(generic.ListView):
+class ItemDetailView(generics.RetrieveAPIView):
     """
-    Provides a get method handler.
+    Provides a get method handler for a single item given an id.
     """
-    model = Item
-    template_name = 'catalogue/index.html'
+
+    queryset = Item.objects.all()
+    serializer_class = ItemSerializer
+
+    def get(self, *args, **kwargs):
+        try:
+            item = Item.objects.get(pk=kwargs["pk"])
+            return Response(ItemSerializer(item).data)
+        except Item.DoesNotExist:
+            return Response(
+                data={
+                    "message": f"Item with id: {kwargs['pk']} does not exist"
+                },
+                status = status.HTTP_404_NOT_FOUND,
+            )
