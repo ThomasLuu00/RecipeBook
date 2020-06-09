@@ -24,9 +24,14 @@ class ItemDetailView(generics.RetrieveAPIView):
             item = Item.objects.get(pk=kwargs["pk"])
             return Response(ItemSerializer(item).data)
         except Item.DoesNotExist:
-            return Response(
-                data={
-                    "message": f"Item with id: {kwargs['pk']} does not exist"
-                },
-                status = status.HTTP_404_NOT_FOUND,
-            )
+            return Response(data={"message": f"Item with id: {kwargs['pk']} does not exist"}, \
+                status=status.HTTP_404_NOT_FOUND,)
+
+    def put(self, request, *args, **kwargs):
+        try:
+            item = Item.objects.get(pk=kwargs["pk"])
+            updated_item = ItemSerializer().update(item, request.data)
+            return Response(ItemSerializer(updated_item).data)
+        except Item.DoesNotExist:
+            return Response(data={"message": f"Item with id: {kwargs['pk']} does not exist"}, \
+                status=status.HTTP_404_NOT_FOUND,)
