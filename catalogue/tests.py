@@ -1,17 +1,23 @@
 from django.urls import reverse
 from rest_framework.test import APITestCase, APIClient
 from rest_framework.views import status
+from rest_framework.utils import json
 from .models import Item
 from .serializers import ItemSerializer
-from rest_framework.utils import json
+
 
 class BaseViewTest(APITestCase):
     client = APIClient()
 
     @staticmethod
-    def create_item(name="", description=""):
+    def create_item_db(name="", description=""):
         if name != "" and description != "":
             Item.objects.create(name=name, description=description)
+
+    def create_item(self, **kwargs):
+        return self.client.post(reverse("item-all", kwargs={
+            "version": "v1",
+        }), data=json.dumps(kwargs["data"]), content_type="application/json")
 
     def fetch_item(self, pk=0):
         return self.client.get(reverse("item-detail", kwargs={
@@ -23,10 +29,7 @@ class BaseViewTest(APITestCase):
         return self.client.put(reverse("item-detail", kwargs={
             "version": "v1",
             "pk": pk,
-            }),
-            data=json.dumps(kwargs["data"]), 
-            content_type="application/json"
-        )
+            }), data=json.dumps(kwargs["data"]), content_type="application/json")
 
     def delete_item(self, pk=0):
         return self.client.delete(reverse("item-detail", kwargs={
@@ -36,14 +39,15 @@ class BaseViewTest(APITestCase):
 
     def setUp(self):
         # add test data
-        self.create_item("wooden sword", "A simple wooden sword.")
-        self.create_item("tree branch", "A tree branch picked up off the ground.")
-        self.create_item("love is wicked", "brick and lace")
-        self.create_item("jam rock", "damien marley")
+        self.create_item_db("wooden sword", "A simple wooden sword.")
+        self.create_item_db("tree branch", "A tree branch picked up off the ground.")
+        self.create_item_db("love is wicked", "brick and lace")
+        self.create_item_db("jam rock", "damien marley")
         self.valid_item_id = 1
         self.invalid_item_id = 100
         self.update_id = 2
         self.delete_id = 3
+        self.create_id = 5
         self.valid_data = {
             "name": "Test",
             "description": "Test description",
@@ -60,7 +64,7 @@ class GetAllItemTest(BaseViewTest):
     def test_get_all_item(self):
         """
         This test ensures that all item added in the setUp method
-        exist when we make a GET request to the item/ endpoint
+        exist when we make a GET request to the item/ endpoint.
         """
 
         # Hit the API endpoint
@@ -75,6 +79,24 @@ class GetAllItemTest(BaseViewTest):
         # Compare actual to expected values
         self.assertEqual(response.data, serialized.data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_create_item(self):
+        """
+        This test ensures that an item is created when we make a POST request to the item/ endpoint.
+        """
+
+        # Hit the API endpoint
+        response = self.create_item(data=self.valid_data)
+
+        # Fetch and serialize data from the database
+        expected = Item.objects.get(pk=self.create_id)
+        serialized = ItemSerializer(expected)
+
+        # Compare actual to expected values
+        self.assertEqual(response.data, serialized.data)
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        
+
 
 class ItemDetailViewTest(BaseViewTest):
     

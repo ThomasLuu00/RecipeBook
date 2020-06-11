@@ -11,7 +11,14 @@ class ListItemsView(generics.ListAPIView):
     queryset = Item.objects.all()
     serializer_class = ItemSerializer
 
-class ItemDetailView(generics.RetrieveAPIView):
+    def post(self, request, *args, **kwargs):
+        item = Item.objects.create(
+            name=request.data["name"],
+            description=request.data["description"]
+        )
+        return Response(ItemSerializer(item).data, status=status.HTTP_201_CREATED)
+
+class ItemDetailView(generics.RetrieveUpdateDestroyAPIView):
     """
     Provides a get method handler for a single item given an id.
     """
