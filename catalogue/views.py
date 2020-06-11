@@ -35,3 +35,12 @@ class ItemDetailView(generics.RetrieveAPIView):
         except Item.DoesNotExist:
             return Response(data={"message": f"Item with id: {kwargs['pk']} does not exist"}, \
                 status=status.HTTP_404_NOT_FOUND,)
+
+    def delete(self, request, *args, **kwargs):
+        try:
+            item = Item.objects.get(pk=kwargs["pk"])
+            item.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        except Item.DoesNotExist:
+            return Response(data={"message": f"Item with id: {kwargs['pk']} does not exist"}, \
+                status=status.HTTP_404_NOT_FOUND,)
