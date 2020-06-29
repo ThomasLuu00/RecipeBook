@@ -1,0 +1,17 @@
+<button
+  *ngIf="!auth.isLoggedIn"
+  (click)="auth.login()">
+    Log In
+</button>
+
+<button
+  *ngIf="auth.isLoggedIn"
+  (click)="auth.logout()">
+    Log Out
+</button>
+
+<nav>
+    <a *ngIf="auth.isLoggedIn" routerLink="/ingredients">My Tasks</a>
+</nav>
+
+<router-outlet></router-outlet>

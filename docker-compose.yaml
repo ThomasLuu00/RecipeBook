@@ -1,0 +1,22 @@
+version: "3"
+
+services:     
+  db:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: postgres
+  dj:
+    container_name: dj
+    build: django
+    command: python manage.py runserver 0.0.0.0:80
+    volumes:
+      - ./django:/code
+    ports:
+      - "80:80"
+    depends_on:
+      - db
+  ng:
+    container_name: ng
+    build: angular
+    ports:
+      - "8080:80"
