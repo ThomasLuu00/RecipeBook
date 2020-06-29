@@ -1,0 +1,9 @@
+a, a:link, a:hover, a:visited {
+    color:inherit;
+    text-decoration: none;
+}
+
+.nav-right {
+    flex: 1 1 auto;
+    text-align: right;
+}

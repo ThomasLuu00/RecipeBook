@@ -13,7 +13,8 @@ import { Ingredient } from '../ingredient';
 export class IngredientListComponent implements OnInit {
   ingredients$: Observable<Ingredient[]>;
   ingredient_form: FormGroup;
-
+  panelOpenState: Boolean = false;
+   
   constructor(private apiService: ApiService, private form_builder: FormBuilder) { }
 
   ngOnInit(): void {
