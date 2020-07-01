@@ -2,3 +2,6 @@
 *.pyc
 *.vscode/
 *.venv/
+deployment.yaml
+load-balancer-service.yaml
+service.yaml

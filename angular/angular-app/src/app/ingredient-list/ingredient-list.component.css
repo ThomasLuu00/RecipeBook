@@ -1,0 +1,9 @@
+button {
+    display: table-cell;
+    background-color: black;
+}
+
+.svg {
+    display: inline-block;
+    vertical-align: middle;
+}
