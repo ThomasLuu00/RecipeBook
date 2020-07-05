@@ -1,13 +1,27 @@
 <mat-drawer-container class="sidenav-container">
-    <mat-drawer class="sidenav" mode="side" opened>
-        <button mat-button class="sidenav-button" color="primary">
-            <a routerLink="/dashboard">Main</a>
-        </button>
-        <button mat-button class="sidenav-button" color="primary">
-            <a routerLink="/ingredients">Ingredients</a>
-        </button>
+    <mat-drawer #sidenav class="sidenav" mode="side" [(opened)]="opened">
+        <a routerLink="/dashboard">
+            <button mat-button class="sidenav-button" color="primary">
+                Main
+            </button>
+        </a>
+        <a routerLink="/dashboard/ingredients">
+            <button mat-button class="sidenav-button" color="primary">
+                Ingredients
+            </button>
+        </a>
+        <a routerLink="/dashboard/techniques">
+            <button mat-button class="sidenav-button" color="primary">
+            Techniques
+            </button>
+        </a>
     </mat-drawer>
 
-    <mat-drawer-content>Main content</mat-drawer-content>
+    <mat-drawer-content>
+        <div class="sidenav-toggle" (click)="toggleSidebar()"></div> 
+        <div class="sidenav-content">
+            <ng-content></ng-content>
+        </div>
+        
+    </mat-drawer-content>
 </mat-drawer-container>
-  

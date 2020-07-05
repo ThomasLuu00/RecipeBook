@@ -1,11 +1,15 @@
 <mat-toolbar>
     <nav>
-        <button mat-button class="nav-item" color="primary">
-            <a routerLink="/home">Home</a>
-        </button>
-        <button mat-button class="nav-item" color="primary">
-            <a routerLink="/dashboard">Dashboard</a>
-        </button>
+        <a routerLink="/home">
+            <button mat-button class="nav-item" color="primary">
+                Home
+            </button>
+        </a>
+        <a routerLink="/dashboard">
+            <button mat-button class="nav-item" color="primary">
+                Dashboard
+            </button>
+        </a>
     </nav>
     <span class='nav-right'>
         <button mat-button *ngIf="!auth.isLoggedIn" (click)="auth.login()">

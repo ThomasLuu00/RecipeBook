@@ -1,0 +1,35 @@
+.banner {
+    height: 20rem;
+    background-color: lightblue;
+}
+
+.banner-bottom {
+    width: 240px;
+    height: 80px;
+    background: linear-gradient(lightblue, white);
+}
+.banner-text {
+    padding-top: 4rem;
+    font-family: 'Custom';
+    font-size: 1rem;
+}
+
+.title {
+    padding-top: 3rem;
+    padding-left: 2rem;
+    font-size: 10rem;
+}
+
+.title-pre {
+    padding-left: 2rem;
+}
+
+.title-post {
+    padding-top: 3rem;
+    padding-left: 27rem;
+}
+
+@font-face {
+    font-family: 'Custom';
+    src: url('/assets/fonts/LibertinusSerif-Semibold.otf') format('opentype');
+}

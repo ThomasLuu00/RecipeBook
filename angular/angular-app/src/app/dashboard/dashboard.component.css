@@ -5,11 +5,34 @@ a, a:link, a:hover, a:visited {
 
 .sidenav-button {
     display: block;
+    width: 150px;
+    text-align: left;
+    padding: 10px 20px 10px 20px;
+    border-radius: 0px;
 }
 
 .sidenav-container {
-    height: 300px;
+    height: 80%;
     border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.sidenav-toggle {
+    position: relative;
+    display: block; /* Hidden by default */
+    float: left;
+    width: 20px; /* Full width (cover the whole page) */
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: background-color 0.3s ease;
+    background-color: transparent;
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer; /* Add a pointer on hover */
+}
+.sidenav-toggle:hover{
+    background-color: rgba(0,0,0,0.3); /* Black background with opacity */
 }
 
 .sidenav-content {
@@ -20,5 +43,6 @@ a, a:link, a:hover, a:visited {
 }
 
 .sidenav {
-    padding: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }

@@ -1,6 +1,8 @@
 <app-navbar></app-navbar>
+<app-dashboard *ngIf=" this.router.url.match('/dashboard'), else normal">
+    <router-outlet></router-outlet>
+</app-dashboard>
 
-<button mat-icon-button color='primary' aria-label="icon-edit">
-    <mat-icon >icon-edit</mat-icon>
-</button>
-<router-outlet></router-outlet>
+<ng-template #normal>
+    <router-outlet></router-outlet>
+</ng-template>
