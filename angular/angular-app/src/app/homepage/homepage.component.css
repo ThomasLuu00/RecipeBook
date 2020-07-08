@@ -1,5 +1,4 @@
 .content {
-    float: top;
     z-index: 1;
 }
 .overlay {
@@ -13,7 +12,6 @@
     bottom: 0;
     background-color: rgba(255,255,255,0.5); /* Black background with opacity */
     z-index: 10; /* Specify a stack order in case you're using a different order for other elements */
-    cursor: pointer; /* Add a pointer on hover */
 }
 
 .background {
@@ -27,3 +25,53 @@
     background-size: cover;
     z-index: 11;
 }
+
+.linkbar{
+    display: flex;
+    justify-content: center;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 10%;
+}
+
+.tele {
+    display: block;
+    width: 100px;
+    padding: 20px;
+    border-width: thick;
+    border-style: solid;
+    border: blue;
+    transition: box-shadow 0.3s ease;
+    background-color: black;
+    color:white;
+    box-shadow: none;
+}
+
+.sticky_sentinel {
+    position: relative;
+    height: 20%;
+    left: 0;
+    right: 0; /* needs dimensions */
+    transition: background-color 0.3s ease;
+    background-color: rgb(255,0,0,0.5);
+    visibility: visible; /*set to hidden*/
+}
+
+.sticky_sentinel--top {
+    /* Adjust the height and top values based on your on your sticky top position.
+    e.g. make the height bigger and adjust the top so observeHeaders()'s
+    IntersectionObserver fires as soon as the bottom of the sentinel crosses the
+    top of the intersection container. */
+    height: 80px;
+    top: -60px;
+}
+.sticky_sentinel--bottom {
+    /* Height should match the top of the header when it's at the bottom of the
+    intersection container. */
+    height: calc(var(--header-height) + var(--default-padding));
+    bottom: 0;
+}
+  #wrapper {
+      background-color: lightgreen;
+      height: 200px;
+  }

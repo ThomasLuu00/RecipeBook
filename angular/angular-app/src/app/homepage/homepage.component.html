@@ -3,7 +3,14 @@
         <div class="content">
             <app-banner></app-banner>
         </div>
-    </div>
+
+        <div id="wrapper" class="content">
+        <div class="content linkbar">
+            <div appStickyFloat (stuck)=onStuck($event) (unstuck)=onUnstuck($event) [ngStyle]="{'box-shadow' : floatContentBar ? '8px 8px 10px #000000' : 'none'}" class="tele">Hello | Test</div>
+        </div>
+        </div>
+
+        <div  class="content sticky_sentinel sticky_sentinel--top"></div>  
 </div>
 
 

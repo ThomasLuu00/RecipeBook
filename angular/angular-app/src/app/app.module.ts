@@ -21,6 +21,9 @@ import { BannerComponent } from './banner/banner.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { TechniqueListComponent } from './technique-list/technique-list.component';
+import { StickyFloatDirective } from './directives/sticky-float.directive';
+import { ContentBarComponent } from './content-bar/content-bar.component';
+import { SentinelObserverDirective } from './directives/sentinel-observer.directive';
 
 @NgModule({
   declarations: [
@@ -31,6 +34,9 @@ import { TechniqueListComponent } from './technique-list/technique-list.componen
     DashboardComponent,
     HomepageComponent,
     TechniqueListComponent,
+    StickyFloatDirective,
+    ContentBarComponent,
+    SentinelObserverDirective,
   ],
   imports: [
     BrowserModule,

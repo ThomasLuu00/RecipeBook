@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-homepage',
@@ -6,10 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
+  floatContentBar = false;
 
   constructor() { }
 
-  ngOnInit(): void {
+  onStuck(e) {
+    console.log(e)
+    this.floatContentBar = true;
   }
+  onUnstuck(e) {
+    console.log('unstuck')
+    this.floatContentBar = false;
+  }
+  ngOnInit(): void {}
 
 }
