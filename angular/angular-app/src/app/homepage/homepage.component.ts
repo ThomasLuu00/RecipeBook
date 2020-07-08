@@ -18,6 +18,11 @@ export class HomepageComponent implements OnInit {
     console.log('unstuck')
     this.floatContentBar = false;
   }
+
+  scrollToElement($element): void {
+    $element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+  }
+
   ngOnInit(): void {}
 
 }

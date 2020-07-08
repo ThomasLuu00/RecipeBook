@@ -1,12 +1,17 @@
 <div class="background">
     <div class="overlay">       
-        <div class="content">
+        <div #panel1 class="content">
             <app-banner></app-banner>
         </div>
         <div class="linkbar">
-            <div appStickyFloat (stuck)=onStuck($event) (unstuck)=onUnstuck($event) [ngStyle]="{'box-shadow' : floatContentBar ? '8px 8px 10px #000000' : 'none'}" class="tele">Hello | Test</div>
+            <div appStickyFloat (stuck)=onStuck($event) (unstuck)=onUnstuck($event) [ngStyle]="{'box-shadow' : floatContentBar ? '8px 8px 10px #000000' : 'none'}" class="tele">
+                <div style="display: inline-block;">
+                    <button mat-button (click)="scrollToElement(panel1)" color="primary">1</button>
+                    <button mat-button (click)="scrollToElement(panel2)" color="primary">2</button>
+                </div>
+            </div>
         </div>
-        <div class="content">
+        <div #panel2 class="content">
             <div  style="background-color: black; height: 100vh;"></div>
         </div>
         <div class="content">

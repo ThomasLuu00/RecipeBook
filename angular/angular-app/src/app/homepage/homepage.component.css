@@ -37,11 +37,9 @@
 
 .tele {
     position: relative;
-    display: block;
     top: -20vh;
-    width: 100px;
-    padding: 20px;
-    height: 20px;
+    padding: 0px;
+    height: 40px;
     border-width: thick;
     border-style: solid;
     border: blue;
@@ -52,6 +50,10 @@
     z-index: 5;
 }
 
+.buttons {
+    display: inline-block;
+    width: 100;
+}
 .sticky_sentinel {
     position: absolute;
     left: 0;
