@@ -31,13 +31,17 @@
     justify-content: center;
     position: -webkit-sticky;
     position: sticky;
-    top: 10%;
+    top: 25vh;
+    height: 0;
 }
 
 .tele {
+    position: relative;
     display: block;
+    top: -20vh;
     width: 100px;
     padding: 20px;
+    height: 20px;
     border-width: thick;
     border-style: solid;
     border: blue;
@@ -45,11 +49,11 @@
     background-color: black;
     color:white;
     box-shadow: none;
+    z-index: 5;
 }
 
 .sticky_sentinel {
-    position: relative;
-    height: 20%;
+    position: absolute;
     left: 0;
     right: 0; /* needs dimensions */
     transition: background-color 0.3s ease;
@@ -63,7 +67,7 @@
     IntersectionObserver fires as soon as the bottom of the sentinel crosses the
     top of the intersection container. */
     height: 80px;
-    top: -60px;
+    top: calc(100vh - 80px);
 }
 .sticky_sentinel--bottom {
     /* Height should match the top of the header when it's at the bottom of the
@@ -71,7 +75,12 @@
     height: calc(var(--header-height) + var(--default-padding));
     bottom: 0;
 }
-  #wrapper {
-      background-color: lightgreen;
-      height: 200px;
-  }
+#wrapper {
+    position: absolute;
+    left: 0;
+    right: 0; /* needs dimensions */
+    background-color: lightgreen;
+    height: inherit;
+    top: 0;
+    z-index: 100;
+}

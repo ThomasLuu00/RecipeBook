@@ -1,15 +1,11 @@
 .banner {
-    height: 500px;
+    display: flex;
+    align-items: center;
+    height: 95vh;
     background-color: lightblue;
 }
 
-.banner-bottom {
-    width: 240px;
-    height: 80px;
-    background: linear-gradient(lightblue, white);
-}
 .banner-text {
-    padding-top: 4rem;
     font-family: 'Custom';
     font-size: 1rem;
 }
