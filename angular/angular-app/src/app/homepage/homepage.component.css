@@ -44,7 +44,7 @@
     border-style: solid;
     border: blue;
     transition: box-shadow 0.3s ease;
-    background-color: black;
+    background-color: white;
     color:white;
     box-shadow: none;
     z-index: 5;

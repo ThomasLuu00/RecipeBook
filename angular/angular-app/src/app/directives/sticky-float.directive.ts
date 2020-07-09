@@ -17,15 +17,13 @@ export class StickyFloatDirective {
     
     console.log(this._element.nativeElement)
     const options = {
-      root: document.querySelector('#wrapper'),
-      rootMargin: '0px',
-      threshold: 0.8
+      rootMargin: '0px 0px -85%',
+      threshold: 0
     }
 
     const options2 = {
-      root: document.querySelector('#scrollArea'),
-      rootMargin: '0px 0px -70%',
-      threshold: 0
+      rootMargin: '0px 0px -30%',
+      threshold: 1
     }
 
     this._stuckObserver = new IntersectionObserver(entries => {
